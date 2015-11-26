@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% load extras %}
+<body>
+<div class="container" >
+	<center><h3>Enter Sudoku [9 x 9] matrix</h3>
+	<form name="sudokuInput" method="post" action="{% url 'code:solution' %}" >
+	{% csrf_token %}
+		<table width="30%" align="center"  cellspacing="5"  bgcolor="#FFFFFF" class="table table-bordered" >
+		<tbody>                                
+		{% for row in "9"|range_list %}
+				<tr>
+		{% with forloop.counter0 as out_counter %}
+				{% for element in "9"|range_list %}
+					{% with out_counter|multiply:9 as in_counter %}
+					{% with in_counter|addition:forloop.counter0 as unique_id %}
+					<th width="20" height="35" valign="middle" bordercolor="#000000" bgcolor="#FFFFFF" class="style2" id="cell-element{{ unique_id }}">
+					<input name="{{ unique_id }}" id="{{ unique_id }}" type="number" min="1" max="9" ;" class="input-sm"/>					</th>
+				  {% endwith %}
+					{% endwith %}
+				{% endfor %}
+		  {% endwith %}				</tr>
+			{% endfor %}
+	  </table>
+</div><br>
+	<center><input type="submit" value="solve" id="submit" />
+</form>
+</div>
+</body>
+</html>
+
+

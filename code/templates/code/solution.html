@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+{% load extras %}
+<body>
+<div class="container">
+	<center><h3>Solution</h3>
+	<br>
+	<table width="30%" align="center" cellspacing="5"  bordercolor="#000000" class="style1" >
+	<tbody >
+		{% for row in grid %}
+			<tr >
+			{% for element in row %}
+				<td   bordercolor="#000000"  " class="style2" cellpadding="5">{{  element }}</td>
+		  {% endfor %}			</tr>
+		{% endfor %}
+	</tbody>   
+	</table>
+  <form action="{% url 'code:input' %}">
+	</br><center>	<input type="submit" value="Reset"/>
+	</form>
+</div>
+{% for posted_value in nothing %}
+	{{ posted_value }}
+{% endfor %}
+</body>
+</html>
+
+
